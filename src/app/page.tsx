@@ -17,7 +17,8 @@ export default function PreguntaDeAmor() {
   const botonNoRef = useRef<HTMLButtonElement>(null)
   const contenedorRef = useRef<HTMLDivElement>(null)
 
-  const nombreCorrecto = "Teffy"
+  const nombresCorrectos = ["teffy", "tefi", "tefy"];
+
 
   const textosBotonNo = [
     "No",
@@ -53,18 +54,17 @@ export default function PreguntaDeAmor() {
   }, [nombreVerificado])
 
   const validarNombre = (e: React.FormEvent) => {
-    e.preventDefault()
-    const entradaNormalizada = entradaNombre.trim().toLowerCase()
-    const correctoNormalizado = nombreCorrecto.toLowerCase()
+    e.preventDefault();
+    const entradaNormalizada = entradaNombre.trim().toLowerCase();
 
-    if (entradaNormalizada === correctoNormalizado) {
-      setNombreVerificado(true)
-      setErrorNombre("")
+    if (nombresCorrectos.includes(entradaNormalizada)) {
+      setNombreVerificado(true);
+      setErrorNombre("");
     } else {
-      setErrorNombre("¡Ese no es tu apodo! Intenta de nuevo 🥺")
-      setEntradaNombre("")
+      setErrorNombre("¡Ese no es tu apodo! Intenta de nuevo 🥺");
+      setEntradaNombre("");
     }
-  }
+  };
 
   const moverBotonNo = () => {
     if (contenedorRef.current) {
@@ -161,7 +161,6 @@ export default function PreguntaDeAmor() {
             <Sparkles className="w-4 h-4 md:w-6 md:h-6 text-pink-400 absolute -bottom-2 -left-2 animate-bounce" />
           </div>
 
-          {/* ✨ Bloque de dedicatoria poética con firma */}
           <div className="space-y-4">
             <h1 className="text-3xl md:text-6xl font-bold bg-gradient-to-r from-pink-500 via-red-500 to-purple-600 bg-clip-text text-transparent">
               ¡Yo también te amo! 💖
@@ -171,7 +170,7 @@ export default function PreguntaDeAmor() {
             </p>
             <p className="text-base md:text-lg text-gray-600 max-w-md mx-auto px-4">
               Aprendí que el amor no se toca ni se ve… se siente.
-              A veces, el corazón puede tocar más profundo que cualquier mano. Contigo aprendí eso.            
+              A veces, el corazón puede tocar más profundo que cualquier mano. Contigo aprendí eso.
             </p>
             <p className="text-sm italic text-gray-500 mt-4">
               — Att: Joseph 💖
